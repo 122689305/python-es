@@ -3,7 +3,7 @@ databases:
 - database: "test"
   dialect: "vertica"
   namespace: "public"
-  tables:
+tables:
   - table: "orders"
     columns:
     - name: "order_id"

@@ -1,5 +1,7 @@
 import jnius_config
-jar_path = 'sql-differential-privacy-0.1.2-SNAPSHOT-jar-with-dependencies.jar'
+import os
+path = os.path.abspath(os.path.dirname(__file__))
+jar_path = os.path.join(path, 'sql-differential-privacy-0.1.2-SNAPSHOT-jar-with-dependencies.jar')
 jnius_config.set_classpath(jar_path)
 import jnius
 
@@ -14,7 +16,7 @@ elasticSensitivity = getattr(DPUtils, "MODULE$").elasticSensitivity
 
 
 def k_ES(query, k, yaml_path):
-  System.setProperty("schema.config.path", "src/test/resources/schema.yaml")
+  System.setProperty("schema.config.path", yaml_path) 
 
   analysis = ESAnalyzer()
   parser = parseToRelTree
@@ -26,7 +28,7 @@ def k_ES(query, k, yaml_path):
   return result
 
 def original_k_ES(query, k, yaml_path):
-  System.setProperty("schema.config.path", "src/test/resources/schema.yaml")
+  System.setProperty("schema.config.path", yaml_path) 
 
   result = elasticSensitivity(query, k)
   return result
