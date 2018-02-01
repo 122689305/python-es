@@ -76,3 +76,10 @@ class ComputePathJoin():
 		self.computeLocalSensitivity()
 		return self.ls
 
+	@classmethod	
+	def debug(self, sol):
+		print 'local sensitivity:', sol.solution()
+		print 'prelist:', sol.prelist
+		print 'postlist', sol.postlist
+		print 'preMax:', [max(x.values()) for x in sol.prelist]
+		print 'postMax:', [max(x.values()) for x in sol.postlist]
