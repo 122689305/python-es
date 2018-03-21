@@ -1,0 +1,232 @@
+>>>>>>>>>>>>>>>>>>>>>>>>>>>> Parsing query to relational algebra tree:
+
+    SELECT COUNT(*) FROM orders
+    JOIN customers ON orders.customer_id = customers.customer_id
+    JOIN products ON orders.product_id = products.product_id
+    WHERE orders.product_id = 1 AND customers.address LIKE '%United States%'
+
+<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+********** HistogramAnalysis **********
+                                                                                 State
+                                                                                 -------
+─> Aggregate[COUNT()] groupSets:[]                                               EXPR$0 : AggregationInfo(true,COUNT,Set(),false)
+     │
+     .input
+     │
+     └──> Project                                                                $f0 : AggregationInfo(false,Bottom,Set(),false)
+          │
+          .0 [as $f0]
+          │
+          ├──> Literal[DECIMAL]: 0                                               AggregationInfo(false,Bottom,Set(),false)
+          │
+          .input
+          │
+          └──> Join[INNER]                                                       order_id     : AggregationInfo(false,Bottom,Set(private.orders.order_id),false)
+               │                                                                 order_date   : AggregationInfo(false,Bottom,Set(private.orders.order_date),false)
+               │                                                                 customer_id  : AggregationInfo(false,Bottom,Set(private.orders.customer_id),false)
+               │                                                                 product_id   : AggregationInfo(false,Bottom,Set(private.orders.product_id),false)
+               │                                                                 quantity     : AggregationInfo(false,Bottom,Set(private.orders.quantity),false)
+               │                                                                 customer_id0 : AggregationInfo(false,Bottom,Set(private.customers.customer_id),false)
+               │                                                                 name         : AggregationInfo(false,Bottom,Set(private.customers.name),false)
+               │                                                                 address      : AggregationInfo(false,Bottom,Set(private.customers.address),false)
+               │                                                                 product_id0  : AggregationInfo(false,Bottom,Set(private.products.product_id),false)
+               │                                                                 name0        : AggregationInfo(false,Bottom,Set(private.products.name),false)
+               │                                                                 price        : AggregationInfo(false,Bottom,Set(private.products.price),false)
+               │
+               .condition
+               │
+               ├──> Call[=]                                                      AggregationInfo(false,Bottom,Set(private.orders.product_id, private.products.product_id),false)
+               │    ├──> Ref[input.3] (product_id)                               AggregationInfo(false,Bottom,Set(private.orders.product_id),false)
+               │    └──> Ref[input.8] (product_id0)                              AggregationInfo(false,Bottom,Set(private.products.product_id),false)
+               │                                                                         
+               │
+               .left
+               │
+               ├──> Join[INNER]                                                  order_id     : AggregationInfo(false,Bottom,Set(private.orders.order_id),false)
+               │    │                                                            order_date   : AggregationInfo(false,Bottom,Set(private.orders.order_date),false)
+               │    │                                                            customer_id  : AggregationInfo(false,Bottom,Set(private.orders.customer_id),false)
+               │    │                                                            product_id   : AggregationInfo(false,Bottom,Set(private.orders.product_id),false)
+               │    │                                                            quantity     : AggregationInfo(false,Bottom,Set(private.orders.quantity),false)
+               │    │                                                            customer_id0 : AggregationInfo(false,Bottom,Set(private.customers.customer_id),false)
+               │    │                                                            name         : AggregationInfo(false,Bottom,Set(private.customers.name),false)
+               │    │                                                            address      : AggregationInfo(false,Bottom,Set(private.customers.address),false)
+               │    │
+               │    .condition
+               │    │
+               │    ├──> Call[=]                                                 AggregationInfo(false,Bottom,Set(private.orders.customer_id, private.customers.customer_id),false)
+               │    │    ├──> Ref[input.2] (customer_id)                         AggregationInfo(false,Bottom,Set(private.orders.customer_id),false)
+               │    │    └──> Ref[input.5] (customer_id0)                        AggregationInfo(false,Bottom,Set(private.customers.customer_id),false)
+               │    │                                                                    
+               │    │
+               │    .left
+               │    │
+               │    ├──> Filter                                                  order_id    : AggregationInfo(false,Bottom,Set(private.orders.order_id),false)
+               │    │    │                                                       order_date  : AggregationInfo(false,Bottom,Set(private.orders.order_date),false)
+               │    │    │                                                       customer_id : AggregationInfo(false,Bottom,Set(private.orders.customer_id),false)
+               │    │    │                                                       product_id  : AggregationInfo(false,Bottom,Set(private.orders.product_id),false)
+               │    │    │                                                       quantity    : AggregationInfo(false,Bottom,Set(private.orders.quantity),false)
+               │    │    │
+               │    │    .condition
+               │    │    │
+               │    │    ├──> Call[=]                                            AggregationInfo(false,Bottom,Set(private.orders.product_id),false)
+               │    │    │    ├──> Ref[input.3] (product_id)                     AggregationInfo(false,Bottom,Set(private.orders.product_id),false)
+               │    │    │    └──> Literal[DECIMAL]: 1                           AggregationInfo(false,Bottom,Set(),false)
+               │    │    │                                                               
+               │    │    │
+               │    │    .input
+               │    │    │
+               │    │    └──> TableScan[private.orders]                          order_id    : AggregationInfo(false,Bottom,Set(private.orders.order_id),false)
+               │    │                                                            order_date  : AggregationInfo(false,Bottom,Set(private.orders.order_date),false)
+               │    │                                                            customer_id : AggregationInfo(false,Bottom,Set(private.orders.customer_id),false)
+               │    │                                                            product_id  : AggregationInfo(false,Bottom,Set(private.orders.product_id),false)
+               │    │                                                            quantity    : AggregationInfo(false,Bottom,Set(private.orders.quantity),false)
+               │    │                                                                    
+               │    │
+               │    .right
+               │    │
+               │    └──> Filter                                                  customer_id : AggregationInfo(false,Bottom,Set(private.customers.customer_id),false)
+               │         │                                                       name        : AggregationInfo(false,Bottom,Set(private.customers.name),false)
+               │         │                                                       address     : AggregationInfo(false,Bottom,Set(private.customers.address),false)
+               │         │
+               │         .condition
+               │         │
+               │         ├──> Call[LIKE]                                         AggregationInfo(false,Bottom,Set(private.customers.address),false)
+               │         │    ├──> Ref[input.2] (customer_id)                    AggregationInfo(false,Bottom,Set(private.customers.address),false)
+               │         │    └──> Literal[CHAR]: _ISO-8859-1'%United States%'   AggregationInfo(false,Bottom,Set(),false)
+               │         │                                                               
+               │         │
+               │         .input
+               │         │
+               │         └──> TableScan[private.customers]                       customer_id : AggregationInfo(false,Bottom,Set(private.customers.customer_id),false)
+               │                                                                 name        : AggregationInfo(false,Bottom,Set(private.customers.name),false)
+               │                                                                 address     : AggregationInfo(false,Bottom,Set(private.customers.address),false)
+               │                                                                         
+               │
+               .right
+               │
+               └──> TableScan[private.products]                                  product_id : AggregationInfo(false,Bottom,Set(private.products.product_id),false)
+                                                                                 name       : AggregationInfo(false,Bottom,Set(private.products.name),false)
+                                                                                 price      : AggregationInfo(false,Bottom,Set(private.products.price),false)
+                                                                                         
+
+********** ElasticSensitivityAnalysis **********
+                                                                                 State
+                                                                                 -------
+─> Aggregate[COUNT()] groupSets:[]                                               { stability: 30300.0, isPublic: false, ancestors: Set(private.orders, private.customers, private.products) }
+     │                                                                           EXPR$0 : sensitivity: Some(30300.0), maxFreq: Infinity, aggregationApplied: true, postAggregationArithmeticApplied: false, canRelease: false
+     │
+     .input
+     │
+     └──> Project                                                                { stability: 30300.0, isPublic: false, ancestors: Set(private.orders, private.customers, private.products) }
+          │                                                                      $f0 : sensitivity: None, maxFreq: Infinity, aggregationApplied: false, postAggregationArithmeticApplied: false, canRelease: true
+          │
+          .0 [as $f0]
+          │
+          ├──> Literal[DECIMAL]: 0                                               sensitivity: None, maxFreq: Infinity, aggregationApplied: false, postAggregationArithmeticApplied: false, canRelease: true
+          │
+          .input
+          │
+          └──> Join[INNER]                                                       { stability: 30300.0, isPublic: false, ancestors: Set(private.orders, private.customers, private.products) }
+               │                                                                 order_id     : sensitivity: None, maxFreq: 1200.0, aggregationApplied: false, postAggregationArithmeticApplied: false, canRelease: false
+               │                                                                 order_date   : sensitivity: None, maxFreq: Infinity, aggregationApplied: false, postAggregationArithmeticApplied: false, canRelease: true
+               │                                                                 customer_id  : sensitivity: None, maxFreq: 60600.0, aggregationApplied: false, postAggregationArithmeticApplied: false, canRelease: false
+               │                                                                 product_id   : sensitivity: None, maxFreq: 300600.0, aggregationApplied: false, postAggregationArithmeticApplied: false, canRelease: true
+               │                                                                 quantity     : sensitivity: None, maxFreq: Infinity, aggregationApplied: false, postAggregationArithmeticApplied: false, canRelease: false
+               │                                                                 customer_id0 : sensitivity: None, maxFreq: 60600.0, aggregationApplied: false, postAggregationArithmeticApplied: false, canRelease: false
+               │                                                                 name         : sensitivity: None, maxFreq: Infinity, aggregationApplied: false, postAggregationArithmeticApplied: false, canRelease: false
+               │                                                                 address      : sensitivity: None, maxFreq: 181800.0, aggregationApplied: false, postAggregationArithmeticApplied: false, canRelease: false
+               │                                                                 product_id0  : sensitivity: None, maxFreq: 300600.0, aggregationApplied: false, postAggregationArithmeticApplied: false, canRelease: true
+               │                                                                 name0        : sensitivity: None, maxFreq: Infinity, aggregationApplied: false, postAggregationArithmeticApplied: false, canRelease: true
+               │                                                                 price        : sensitivity: None, maxFreq: Infinity, aggregationApplied: false, postAggregationArithmeticApplied: false, canRelease: true
+               │
+               .condition
+               │
+               ├──> Call[=]                                                      sensitivity: Some(Infinity), maxFreq: Infinity, aggregationApplied: false, postAggregationArithmeticApplied: false, canRelease: true
+               │    ├──> Ref[input.3] (product_id)                               sensitivity: None, maxFreq: 1002.0, aggregationApplied: false, postAggregationArithmeticApplied: false, canRelease: true
+               │    └──> Ref[input.8] (product_id0)                              sensitivity: None, maxFreq: 300.0, aggregationApplied: false, postAggregationArithmeticApplied: false, canRelease: true
+               │                                                                         
+               │
+               .left
+               │
+               ├──> Join[INNER]                                                  { stability: 101.0, isPublic: false, ancestors: Set(private.orders, private.customers) }
+               │    │                                                            order_id     : sensitivity: None, maxFreq: 4.0, aggregationApplied: false, postAggregationArithmeticApplied: false, canRelease: false
+               │    │                                                            order_date   : sensitivity: None, maxFreq: Infinity, aggregationApplied: false, postAggregationArithmeticApplied: false, canRelease: true
+               │    │                                                            customer_id  : sensitivity: None, maxFreq: 202.0, aggregationApplied: false, postAggregationArithmeticApplied: false, canRelease: false
+               │    │                                                            product_id   : sensitivity: None, maxFreq: 1002.0, aggregationApplied: false, postAggregationArithmeticApplied: false, canRelease: true
+               │    │                                                            quantity     : sensitivity: None, maxFreq: Infinity, aggregationApplied: false, postAggregationArithmeticApplied: false, canRelease: false
+               │    │                                                            customer_id0 : sensitivity: None, maxFreq: 202.0, aggregationApplied: false, postAggregationArithmeticApplied: false, canRelease: false
+               │    │                                                            name         : sensitivity: None, maxFreq: Infinity, aggregationApplied: false, postAggregationArithmeticApplied: false, canRelease: false
+               │    │                                                            address      : sensitivity: None, maxFreq: 606.0, aggregationApplied: false, postAggregationArithmeticApplied: false, canRelease: false
+               │    │
+               │    .condition
+               │    │
+               │    ├──> Call[=]                                                 sensitivity: Some(Infinity), maxFreq: Infinity, aggregationApplied: false, postAggregationArithmeticApplied: false, canRelease: false
+               │    │    ├──> Ref[input.2] (customer_id)                         sensitivity: None, maxFreq: 101.0, aggregationApplied: false, postAggregationArithmeticApplied: false, canRelease: false
+               │    │    └──> Ref[input.5] (customer_id0)                        sensitivity: None, maxFreq: 2.0, aggregationApplied: false, postAggregationArithmeticApplied: false, canRelease: false
+               │    │                                                                    
+               │    │
+               │    .left
+               │    │
+               │    ├──> Filter                                                  { stability: 1.0, isPublic: false, ancestors: Set(private.orders) }
+               │    │    │                                                       order_id    : sensitivity: None, maxFreq: 2.0, aggregationApplied: false, postAggregationArithmeticApplied: false, canRelease: false
+               │    │    │                                                       order_date  : sensitivity: None, maxFreq: Infinity, aggregationApplied: false, postAggregationArithmeticApplied: false, canRelease: true
+               │    │    │                                                       customer_id : sensitivity: None, maxFreq: 101.0, aggregationApplied: false, postAggregationArithmeticApplied: false, canRelease: false
+               │    │    │                                                       product_id  : sensitivity: None, maxFreq: 501.0, aggregationApplied: false, postAggregationArithmeticApplied: false, canRelease: true
+               │    │    │                                                       quantity    : sensitivity: None, maxFreq: Infinity, aggregationApplied: false, postAggregationArithmeticApplied: false, canRelease: false
+               │    │    │
+               │    │    .condition
+               │    │    │
+               │    │    ├──> Call[=]                                            sensitivity: Some(Infinity), maxFreq: Infinity, aggregationApplied: false, postAggregationArithmeticApplied: false, canRelease: true
+               │    │    │    ├──> Ref[input.3] (product_id)                     sensitivity: None, maxFreq: 501.0, aggregationApplied: false, postAggregationArithmeticApplied: false, canRelease: true
+               │    │    │    └──> Literal[DECIMAL]: 1                           sensitivity: None, maxFreq: Infinity, aggregationApplied: false, postAggregationArithmeticApplied: false, canRelease: true
+               │    │    │                                                               
+               │    │    │
+               │    │    .input
+               │    │    │
+               │    │    └──> TableScan[private.orders]                          { stability: 1.0, isPublic: false, ancestors: Set(private.orders) }
+               │    │                                                            order_id    : sensitivity: None, maxFreq: 2.0, aggregationApplied: false, postAggregationArithmeticApplied: false, canRelease: false
+               │    │                                                            order_date  : sensitivity: None, maxFreq: Infinity, aggregationApplied: false, postAggregationArithmeticApplied: false, canRelease: true
+               │    │                                                            customer_id : sensitivity: None, maxFreq: 101.0, aggregationApplied: false, postAggregationArithmeticApplied: false, canRelease: false
+               │    │                                                            product_id  : sensitivity: None, maxFreq: 501.0, aggregationApplied: false, postAggregationArithmeticApplied: false, canRelease: true
+               │    │                                                            quantity    : sensitivity: None, maxFreq: Infinity, aggregationApplied: false, postAggregationArithmeticApplied: false, canRelease: false
+               │    │                                                                    
+               │    │
+               │    .right
+               │    │
+               │    └──> Filter                                                  { stability: 1.0, isPublic: false, ancestors: Set(private.customers) }
+               │         │                                                       customer_id : sensitivity: None, maxFreq: 2.0, aggregationApplied: false, postAggregationArithmeticApplied: false, canRelease: false
+               │         │                                                       name        : sensitivity: None, maxFreq: Infinity, aggregationApplied: false, postAggregationArithmeticApplied: false, canRelease: false
+               │         │                                                       address     : sensitivity: None, maxFreq: 6.0, aggregationApplied: false, postAggregationArithmeticApplied: false, canRelease: false
+               │         │
+               │         .condition
+               │         │
+               │         ├──> Call[LIKE]                                         sensitivity: Some(Infinity), maxFreq: Infinity, aggregationApplied: false, postAggregationArithmeticApplied: false, canRelease: false
+               │         │    ├──> Ref[input.2] (customer_id)                    sensitivity: None, maxFreq: 6.0, aggregationApplied: false, postAggregationArithmeticApplied: false, canRelease: false
+               │         │    └──> Literal[CHAR]: _ISO-8859-1'%United States%'   sensitivity: None, maxFreq: Infinity, aggregationApplied: false, postAggregationArithmeticApplied: false, canRelease: true
+               │         │                                                               
+               │         │
+               │         .input
+               │         │
+               │         └──> TableScan[private.customers]                       { stability: 1.0, isPublic: false, ancestors: Set(private.customers) }
+               │                                                                 customer_id : sensitivity: None, maxFreq: 2.0, aggregationApplied: false, postAggregationArithmeticApplied: false, canRelease: false
+               │                                                                 name        : sensitivity: None, maxFreq: Infinity, aggregationApplied: false, postAggregationArithmeticApplied: false, canRelease: false
+               │                                                                 address     : sensitivity: None, maxFreq: 6.0, aggregationApplied: false, postAggregationArithmeticApplied: false, canRelease: false
+               │                                                                         
+               │
+               .right
+               │
+               └──> TableScan[private.products]                                  { stability: 0.0, isPublic: true, ancestors: Set(private.products) }
+                                                                                 product_id : sensitivity: None, maxFreq: 300.0, aggregationApplied: false, postAggregationArithmeticApplied: false, canRelease: true
+                                                                                 name       : sensitivity: None, maxFreq: Infinity, aggregationApplied: false, postAggregationArithmeticApplied: false, canRelease: true
+                                                                                 price      : sensitivity: None, maxFreq: Infinity, aggregationApplied: false, postAggregationArithmeticApplied: false, canRelease: true
+                                                                                         
+----------query is----------
+
+    SELECT COUNT(*) FROM orders
+    JOIN customers ON orders.customer_id = customers.customer_id
+    JOIN products ON orders.product_id = products.product_id
+    WHERE orders.product_id = 1 AND customers.address LIKE '%United States%'
+
+----------------------------
+result=30300.000000

@@ -1,0 +1,1 @@
+SELECT agep, g_id, h_id, ishisp, racaian, racasn, racblk, racnhpi, racnum, racsor, racwht, relp, sex, ten FROM hh_persons JOIN housing ON hh_persons.h_id = housing.h_id

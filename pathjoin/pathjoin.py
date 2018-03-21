@@ -16,12 +16,12 @@ class AttributesPairs():
 		for pair in self.pairs:
 			yield pair
 
-	# return a counting dictionary grouped by the left attributes 
+	# return a counting dictionary grouped by the left attributes
 	def countByLeft(self):
 		from collections import Counter
 		return dict(Counter(x[0] for x in self.pairs))
 
-	# return a counting dictionary grouped by the right attributes 
+	# return a counting dictionary grouped by the right attributes
 	def countByRight(self):
 		from collections import Counter
 		return dict(Counter(x[1] for x in self.pairs))
@@ -64,22 +64,25 @@ class ComputePathJoin():
 		return self.postlist
 
 	def computeLocalSensitivity(self):
-		ls = max(max(self.prelist[-2].values()), max(self.postlist[1].values()))
+                print("assert")
+                print(self.prelist)
+		ls = max(max(self.prelist[-2].values() + [0]), max(self.postlist[1].values()+[0]))
 		for i in range(1, len(self.aps_list)-1):
-			ls = max(ls, max(self.prelist[i-1].values()) * max(self.postlist[i+1].values()))
+			ls = max(ls, max(self.prelist[i-1].values()+[0]) * max(self.postlist[i+1].values() + [0]))
 		self.ls = ls
 		return ls
 
 	def solution(self):
+		assert(len(self.aps_list) >= 2)
 		self.computePrelist()
 		self.computePostlist()
 		self.computeLocalSensitivity()
 		return self.ls
 
-	@classmethod	
+	@classmethod
 	def debug(self, sol):
 		print 'local sensitivity:', sol.solution()
 		print 'prelist:', sol.prelist
 		print 'postlist', sol.postlist
-		print 'preMax:', [max(x.values()) for x in sol.prelist]
-		print 'postMax:', [max(x.values()) for x in sol.postlist]
+		print 'preMax:', [max(x.values()+[0]) for x in sol.prelist]
+		print 'postMax:', [max(x.values()+[0]) for x in sol.postlist]

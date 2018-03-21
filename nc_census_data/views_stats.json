@@ -1,0 +1,238 @@
+[
+    [
+        "Total Distinct Views", 
+        58
+    ], 
+    [
+        "SELECT agep, g_id, h_id, index, ishisp, racaian, racasn, racblk, racnhpi, racnum, racsor, racwht, relp, sex, ten FROM hh_persons JOIN housing ON hh_persons.h_id = housing.h_id;", 
+        32
+    ], 
+    [
+        "SELECT g_id, h_id, index, ten FROM housing;", 
+        11
+    ], 
+    [
+        "SELECT g_id, h_id, index, ten FROM housing  WHERE (SELECT count(*) AS count_1 FROM hh_persons WHERE hh_persons.h_id = housing.h_id) >= 7;", 
+        3
+    ], 
+    [
+        "SELECT g_id, h_id, index, ten FROM housing  WHERE (SELECT count(*) AS count_1 FROM hh_persons WHERE hh_persons.h_id = housing.h_id) = 1;", 
+        3
+    ], 
+    [
+        "SELECT g_id, h_id, index, ten FROM housing  WHERE (SELECT count(*) AS count_1 FROM hh_persons WHERE hh_persons.h_id = housing.h_id) = 5;", 
+        3
+    ], 
+    [
+        "SELECT g_id, h_id, index, ten FROM housing  WHERE (SELECT count(*) AS count_1 FROM hh_persons WHERE hh_persons.h_id = housing.h_id) = 3;", 
+        3
+    ], 
+    [
+        "SELECT g_id, h_id, index, ten FROM housing  WHERE (SELECT count(*) AS count_1 FROM hh_persons WHERE hh_persons.h_id = housing.h_id) = 6;", 
+        3
+    ], 
+    [
+        "SELECT g_id, h_id, index, ten FROM housing  WHERE (SELECT count(*) AS count_1 FROM hh_persons WHERE hh_persons.h_id = housing.h_id) = 4;", 
+        3
+    ], 
+    [
+        "SELECT g_id, h_id, index, ten FROM housing  WHERE (SELECT count(*) AS count_1 FROM hh_persons WHERE hh_persons.h_id = housing.h_id) = 2;", 
+        3
+    ], 
+    [
+        "SELECT g_id, h_id, index, ten FROM housing  WHERE (SELECT count(*) AS count_1 FROM hh_persons WHERE hh_persons.isHISP = 0 AND hh_persons.RELP = 0 AND hh_persons.h_id = housing.h_id) = 1;", 
+        2
+    ], 
+    [
+        "SELECT agep, g_id, h_id, index, ishisp, racaian, racasn, racblk, racnhpi, racnum, racsor, racwht, relp, sex, ten FROM hh_persons JOIN housing ON hh_persons.h_id = housing.h_id  WHERE (SELECT count(*) AS count_1 FROM hh_persons WHERE hh_persons.RACBLK = 1 AND hh_persons.RACNUM = 1 AND hh_persons.RELP = 0 AND hh_persons.h_id = housing.h_id) = 1;", 
+        2
+    ], 
+    [
+        "SELECT agep, g_id, h_id, index, ishisp, racaian, racasn, racblk, racnhpi, racnum, racsor, racwht, relp, sex, ten FROM hh_persons JOIN housing ON hh_persons.h_id = housing.h_id  WHERE (SELECT count(*) AS count_1 FROM hh_persons WHERE hh_persons.RACNHPI = 1 AND hh_persons.RACNUM = 1 AND hh_persons.RELP = 0 AND hh_persons.h_id = housing.h_id) = 1;", 
+        2
+    ], 
+    [
+        "SELECT agep, g_id, h_id, index, ishisp, racaian, racasn, racblk, racnhpi, racnum, racsor, racwht, relp, sex, ten FROM hh_persons JOIN housing ON hh_persons.h_id = housing.h_id  WHERE (SELECT count(*) AS count_1 FROM hh_persons WHERE hh_persons.RACAIAN = 1 AND hh_persons.RACNUM = 1 AND hh_persons.RELP = 0 AND hh_persons.h_id = housing.h_id) = 1;", 
+        2
+    ], 
+    [
+        "SELECT agep, g_id, h_id, index, ishisp, racaian, racasn, racblk, racnhpi, racnum, racsor, racwht, relp, sex, ten FROM hh_persons JOIN housing ON hh_persons.h_id = housing.h_id  WHERE (SELECT count(*) AS count_1 FROM hh_persons WHERE hh_persons.RACWHT = 1 AND hh_persons.RACNUM = 1 AND hh_persons.RELP = 0 AND hh_persons.h_id = housing.h_id) = 1;", 
+        2
+    ], 
+    [
+        "SELECT agep, g_id, h_id, index, ishisp, racaian, racasn, racblk, racnhpi, racnum, racsor, racwht, relp, sex, ten FROM hh_persons JOIN housing ON hh_persons.h_id = housing.h_id  WHERE (SELECT count(*) AS count_1 FROM hh_persons WHERE hh_persons.isHISP = 1 AND hh_persons.RELP = 0 AND hh_persons.h_id = housing.h_id) = 1;", 
+        2
+    ], 
+    [
+        "SELECT g_id, h_id, index, ten FROM housing  WHERE (SELECT count(*) AS count_1 FROM hh_persons WHERE hh_persons.isHISP = 1 AND hh_persons.RELP = 0 AND hh_persons.h_id = housing.h_id) = 1;", 
+        2
+    ], 
+    [
+        "SELECT agep, g_id, h_id, index, ishisp, racaian, racasn, racblk, racnhpi, racnum, racsor, racwht, relp, sex, ten FROM hh_persons JOIN housing ON hh_persons.h_id = housing.h_id  WHERE (SELECT count(*) AS count_1 FROM hh_persons WHERE hh_persons.isHISP = 0 AND hh_persons.RELP = 0 AND hh_persons.h_id = housing.h_id) = 1;", 
+        2
+    ], 
+    [
+        "SELECT agep, g_id, h_id, index, ishisp, racaian, racasn, racblk, racnhpi, racnum, racsor, racwht, relp, sex, ten FROM hh_persons JOIN housing ON hh_persons.h_id = housing.h_id  WHERE (SELECT count(*) AS count_1 FROM hh_persons WHERE hh_persons.RACASN = 1 AND hh_persons.RACNUM = 1 AND hh_persons.RELP = 0 AND hh_persons.h_id = housing.h_id) = 1;", 
+        2
+    ], 
+    [
+        "SELECT agep, g_id, h_id, index, ishisp, racaian, racasn, racblk, racnhpi, racnum, racsor, racwht, relp, sex, ten FROM hh_persons JOIN housing ON hh_persons.h_id = housing.h_id  WHERE (SELECT count(*) AS count_1 FROM hh_persons WHERE hh_persons.RACSOR = 1 AND hh_persons.RACNUM = 1 AND hh_persons.RELP = 0 AND hh_persons.h_id = housing.h_id) = 1;", 
+        2
+    ], 
+    [
+        "SELECT g_id, h_id, index, ten FROM housing  WHERE (SELECT count(*) AS count_1 FROM hh_persons WHERE hh_persons.isHISP = 0 AND hh_persons.RELP = 0 AND hh_persons.h_id = housing.h_id) = 1(SELECT count(*) AS count_2 FROM hh_persons WHERE hh_persons.RACBLK = 1 AND hh_persons.RELP = 0 AND hh_persons.h_id = housing.h_id) = 1;", 
+        1
+    ], 
+    [
+        "SELECT g_id, h_id, index, ten FROM housing  WHERE (SELECT count(*) AS count_1 FROM hh_persons WHERE hh_persons.RACSOR = 1 AND hh_persons.RELP = 0 AND hh_persons.h_id = housing.h_id) = 1;", 
+        1
+    ], 
+    [
+        "SELECT g_id, h_id, index, ten FROM housing  WHERE (SELECT count(*) AS count_1 FROM hh_persons WHERE hh_persons.isHISP = 1 AND hh_persons.RELP = 0 AND hh_persons.h_id = housing.h_id) = 1(SELECT count(*) AS count_2 FROM hh_persons WHERE hh_persons.RACBLK = 1 AND hh_persons.RACNUM = 1 AND hh_persons.RELP = 0 AND hh_persons.h_id = housing.h_id) = 1;", 
+        1
+    ], 
+    [
+        "SELECT g_id, h_id, index, ten FROM housing  WHERE (SELECT count(*) AS count_1 FROM hh_persons WHERE hh_persons.isHISP = 0 AND hh_persons.RELP = 0 AND hh_persons.h_id = housing.h_id) = 1(SELECT count(*) AS count_2 FROM hh_persons WHERE hh_persons.RACSOR = 1 AND hh_persons.RACNUM = 1 AND hh_persons.RELP = 0 AND hh_persons.h_id = housing.h_id) = 1;", 
+        1
+    ], 
+    [
+        "SELECT g_id, h_id, index, ten FROM housing  WHERE (SELECT count(*) AS count_1 FROM hh_persons WHERE hh_persons.isHISP = 0 AND hh_persons.RELP = 0 AND hh_persons.h_id = housing.h_id) = 1(SELECT count(*) AS count_2 FROM hh_persons WHERE hh_persons.RACBLK = 1 AND hh_persons.RACNUM = 1 AND hh_persons.RELP = 0 AND hh_persons.h_id = housing.h_id) = 1;", 
+        1
+    ], 
+    [
+        "SELECT g_id, h_id, index, ten FROM housing  WHERE (SELECT count(*) AS count_1 FROM hh_persons WHERE hh_persons.isHISP = 1 AND hh_persons.RELP = 0 AND hh_persons.h_id = housing.h_id) = 1(SELECT count(*) AS count_2 FROM hh_persons WHERE hh_persons.RACASN = 1 AND hh_persons.RACNUM = 1 AND hh_persons.RELP = 0 AND hh_persons.h_id = housing.h_id) = 1;", 
+        1
+    ], 
+    [
+        "SELECT g_id, h_id, index, ten FROM housing  WHERE (SELECT count(*) AS count_1 FROM hh_persons WHERE hh_persons.RACNHPI = 1 AND hh_persons.RACNUM = 1 AND hh_persons.RELP = 0 AND hh_persons.h_id = housing.h_id) = 1;", 
+        1
+    ], 
+    [
+        "SELECT g_id, h_id, index, ten FROM housing  WHERE (SELECT count(*) AS count_1 FROM hh_persons WHERE hh_persons.RACAIAN = 1 AND hh_persons.RELP = 0 AND hh_persons.h_id = housing.h_id) = 1;", 
+        1
+    ], 
+    [
+        "SELECT g_id, h_id, index, ten FROM housing  WHERE (SELECT count(*) AS count_1 FROM hh_persons WHERE hh_persons.isHISP = 0 AND hh_persons.RELP = 0 AND hh_persons.h_id = housing.h_id) = 1(SELECT count(*) AS count_2 FROM hh_persons WHERE hh_persons.RACWHT = 1 AND hh_persons.RACNUM = 1 AND hh_persons.RELP = 0 AND hh_persons.h_id = housing.h_id) = 1;", 
+        1
+    ], 
+    [
+        "SELECT g_id, h_id, index, ten FROM housing  WHERE (SELECT count(*) AS count_1 FROM hh_persons WHERE hh_persons.isHISP = 1 AND hh_persons.RELP = 0 AND hh_persons.h_id = housing.h_id) = 1(SELECT count(*) AS count_2 FROM hh_persons WHERE hh_persons.RACWHT = 1 AND hh_persons.RELP = 0 AND hh_persons.h_id = housing.h_id) = 1;", 
+        1
+    ], 
+    [
+        "SELECT g_id, h_id, index, ten FROM housing  WHERE (SELECT count(*) AS count_1 FROM hh_persons WHERE hh_persons.RACWHT = 1 AND hh_persons.RACNUM = 1 AND hh_persons.RELP = 0 AND hh_persons.h_id = housing.h_id) = 1;", 
+        1
+    ], 
+    [
+        "SELECT g_id, h_id, index, ten FROM housing  WHERE (SELECT count(*) AS count_1 FROM hh_persons WHERE hh_persons.isHISP = 1 AND hh_persons.RELP = 0 AND hh_persons.h_id = housing.h_id) = 1(SELECT count(*) AS count_2 FROM hh_persons WHERE hh_persons.RACNHPI = 1 AND hh_persons.RACNUM = 1 AND hh_persons.RELP = 0 AND hh_persons.h_id = housing.h_id) = 1;", 
+        1
+    ], 
+    [
+        "SELECT g_id, h_id, index, ten FROM housing  WHERE (SELECT count(*) AS count_1 FROM hh_persons WHERE hh_persons.RACSOR = 1 AND hh_persons.RACNUM = 1 AND hh_persons.RELP = 0 AND hh_persons.h_id = housing.h_id) = 1;", 
+        1
+    ], 
+    [
+        "SELECT g_id, h_id, index, ten FROM housing  WHERE (SELECT count(*) AS count_1 FROM hh_persons WHERE hh_persons.isHISP = 0 AND hh_persons.RELP = 0 AND hh_persons.h_id = housing.h_id) = 1(SELECT count(*) AS count_2 FROM hh_persons WHERE hh_persons.RACNHPI = 1 AND hh_persons.RELP = 0 AND hh_persons.h_id = housing.h_id) = 1;", 
+        1
+    ], 
+    [
+        "SELECT g_id, h_id, index, ten FROM housing  WHERE (SELECT count(*) AS count_1 FROM hh_persons WHERE hh_persons.isHISP = 0 AND hh_persons.RELP = 0 AND hh_persons.h_id = housing.h_id) = 1(SELECT count(*) AS count_2 FROM hh_persons WHERE hh_persons.RACASN = 1 AND hh_persons.RACNUM = 1 AND hh_persons.RELP = 0 AND hh_persons.h_id = housing.h_id) = 1;", 
+        1
+    ], 
+    [
+        "SELECT g_id, h_id, index, ten FROM housing  WHERE (SELECT count(*) AS count_1 FROM hh_persons WHERE hh_persons.isHISP = 0 AND hh_persons.RELP = 0 AND hh_persons.h_id = housing.h_id) = 1(SELECT count(*) AS count_2 FROM hh_persons WHERE hh_persons.RACSOR = 1 AND hh_persons.RELP = 0 AND hh_persons.h_id = housing.h_id) = 1;", 
+        1
+    ], 
+    [
+        "SELECT g_id, h_id, index, ten FROM housing  WHERE (SELECT count(*) AS count_1 FROM hh_persons WHERE hh_persons.RACBLK = 1 AND hh_persons.RELP = 0 AND hh_persons.h_id = housing.h_id) = 1;", 
+        1
+    ], 
+    [
+        "SELECT g_id, h_id, index, ten FROM housing  WHERE (SELECT count(*) AS count_1 FROM hh_persons WHERE hh_persons.isHISP = 1 AND hh_persons.RELP = 0 AND hh_persons.h_id = housing.h_id) = 1(SELECT count(*) AS count_2 FROM hh_persons WHERE hh_persons.RACNHPI = 1 AND hh_persons.RELP = 0 AND hh_persons.h_id = housing.h_id) = 1;", 
+        1
+    ], 
+    [
+        "SELECT g_id, h_id, index, ten FROM housing  WHERE (SELECT count(*) AS count_1 FROM hh_persons WHERE hh_persons.RACBLK = 1 AND hh_persons.RACNUM = 1 AND hh_persons.RELP = 0 AND hh_persons.h_id = housing.h_id) = 1;", 
+        1
+    ], 
+    [
+        "SELECT g_id, h_id, index, ten FROM housing  WHERE (SELECT count(*) AS count_1 FROM hh_persons WHERE hh_persons.isHISP = 1 AND hh_persons.RELP = 0 AND hh_persons.h_id = housing.h_id) = 1(SELECT count(*) AS count_2 FROM hh_persons WHERE hh_persons.RACASN = 1 AND hh_persons.RELP = 0 AND hh_persons.h_id = housing.h_id) = 1;", 
+        1
+    ], 
+    [
+        "SELECT g_id, h_id, index, ten FROM housing  WHERE (SELECT count(*) AS count_1 FROM hh_persons WHERE hh_persons.isHISP = 1 AND hh_persons.RELP = 0 AND hh_persons.h_id = housing.h_id) = 1(SELECT count(*) AS count_2 FROM hh_persons WHERE hh_persons.RACBLK = 1 AND hh_persons.RELP = 0 AND hh_persons.h_id = housing.h_id) = 1;", 
+        1
+    ], 
+    [
+        "SELECT g_id, h_id, index, ten FROM housing  WHERE (SELECT count(*) AS count_1 FROM hh_persons WHERE hh_persons.isHISP = 0 AND hh_persons.RELP = 0 AND hh_persons.h_id = housing.h_id) = 1(SELECT count(*) AS count_2 FROM hh_persons WHERE hh_persons.RACASN = 1 AND hh_persons.RELP = 0 AND hh_persons.h_id = housing.h_id) = 1;", 
+        1
+    ], 
+    [
+        "SELECT g_id, h_id, index, ten FROM housing  WHERE (SELECT count(*) AS count_1 FROM hh_persons WHERE hh_persons.isHISP = 1 AND hh_persons.RELP = 0 AND hh_persons.h_id = housing.h_id) = 1(SELECT count(*) AS count_2 FROM hh_persons WHERE hh_persons.RACSOR = 1 AND hh_persons.RELP = 0 AND hh_persons.h_id = housing.h_id) = 1;", 
+        1
+    ], 
+    [
+        "SELECT g_id, h_id, index, ten FROM housing  WHERE (SELECT count(*) AS count_1 FROM hh_persons WHERE hh_persons.RACWHT = 1 AND hh_persons.RELP = 0 AND hh_persons.h_id = housing.h_id) = 1;", 
+        1
+    ], 
+    [
+        "SELECT agep, g_id, h_id, index, ishisp, racaian, racasn, racblk, racnhpi, racnum, racsor, racwht, relp, sex, ten FROM housing, hh_persons  WHERE (SELECT count(*) AS count_1 FROM hh_persons WHERE hh_persons.isHISP = 1 AND hh_persons.RELP = 0 AND hh_persons.h_id = housing.h_id) = 1;", 
+        1
+    ], 
+    [
+        "SELECT agep, g_id, h_id, index, ishisp, racaian, racasn, racblk, racnhpi, racnum, racsor, racwht, relp, sex, ten FROM housing, hh_persons  WHERE (SELECT count(*) AS count_1 FROM hh_persons WHERE hh_persons.isHISP = 0 AND hh_persons.RELP = 0 AND hh_persons.h_id = housing.h_id) = 1;", 
+        1
+    ], 
+    [
+        "SELECT g_id, h_id, index, ten FROM housing  WHERE (SELECT count(*) AS count_1 FROM hh_persons WHERE hh_persons.isHISP = 1 AND hh_persons.RELP = 0 AND hh_persons.h_id = housing.h_id) = 1(SELECT count(*) AS count_2 FROM hh_persons WHERE hh_persons.RACWHT = 1 AND hh_persons.RACNUM = 1 AND hh_persons.RELP = 0 AND hh_persons.h_id = housing.h_id) = 1;", 
+        1
+    ], 
+    [
+        "SELECT g_id, h_id, index, ten FROM housing  WHERE (SELECT count(*) AS count_1 FROM hh_persons WHERE hh_persons.RACASN = 1 AND hh_persons.RACNUM = 1 AND hh_persons.RELP = 0 AND hh_persons.h_id = housing.h_id) = 1;", 
+        1
+    ], 
+    [
+        "SELECT g_id, h_id, index, ten FROM housing  WHERE (SELECT count(*) AS count_1 FROM hh_persons WHERE hh_persons.isHISP = 1 AND hh_persons.RELP = 0 AND hh_persons.h_id = housing.h_id) = 1(SELECT count(*) AS count_2 FROM hh_persons WHERE hh_persons.RACAIAN = 1 AND hh_persons.RELP = 0 AND hh_persons.h_id = housing.h_id) = 1;", 
+        1
+    ], 
+    [
+        "SELECT g_id, h_id, index, ten FROM housing  WHERE (SELECT count(*) AS count_1 FROM hh_persons WHERE hh_persons.RACNHPI = 1 AND hh_persons.RELP = 0 AND hh_persons.h_id = housing.h_id) = 1;", 
+        1
+    ], 
+    [
+        "SELECT g_id, h_id, index, ten FROM housing  WHERE (SELECT count(*) AS count_1 FROM hh_persons WHERE hh_persons.isHISP = 0 AND hh_persons.RELP = 0 AND hh_persons.h_id = housing.h_id) = 1(SELECT count(*) AS count_2 FROM hh_persons WHERE hh_persons.RACNHPI = 1 AND hh_persons.RACNUM = 1 AND hh_persons.RELP = 0 AND hh_persons.h_id = housing.h_id) = 1;", 
+        1
+    ], 
+    [
+        "SELECT g_id, h_id, index, ten FROM housing  WHERE (SELECT count(*) AS count_1 FROM hh_persons WHERE hh_persons.isHISP = 1 AND hh_persons.RELP = 0 AND hh_persons.h_id = housing.h_id) = 1(SELECT count(*) AS count_2 FROM hh_persons WHERE hh_persons.RACSOR = 1 AND hh_persons.RACNUM = 1 AND hh_persons.RELP = 0 AND hh_persons.h_id = housing.h_id) = 1;", 
+        1
+    ], 
+    [
+        "SELECT g_id, h_id, index, ten FROM housing  WHERE (SELECT count(*) AS count_1 FROM hh_persons WHERE hh_persons.isHISP = 1 AND hh_persons.RELP = 0 AND hh_persons.h_id = housing.h_id) = 1(SELECT count(*) AS count_2 FROM hh_persons WHERE hh_persons.RACAIAN = 1 AND hh_persons.RACNUM = 1 AND hh_persons.RELP = 0 AND hh_persons.h_id = housing.h_id) = 1;", 
+        1
+    ], 
+    [
+        "SELECT agep, g_id, h_id, index, ishisp, racaian, racasn, racblk, racnhpi, racnum, racsor, racwht, relp, sex, ten FROM housing, hh_persons;", 
+        1
+    ], 
+    [
+        "SELECT g_id, h_id, index, ten FROM housing  WHERE (SELECT count(*) AS count_1 FROM hh_persons WHERE hh_persons.RACASN = 1 AND hh_persons.RELP = 0 AND hh_persons.h_id = housing.h_id) = 1;", 
+        1
+    ], 
+    [
+        "SELECT g_id, h_id, index, ten FROM housing  WHERE (SELECT count(*) AS count_1 FROM hh_persons WHERE hh_persons.isHISP = 0 AND hh_persons.RELP = 0 AND hh_persons.h_id = housing.h_id) = 1(SELECT count(*) AS count_2 FROM hh_persons WHERE hh_persons.RACAIAN = 1 AND hh_persons.RACNUM = 1 AND hh_persons.RELP = 0 AND hh_persons.h_id = housing.h_id) = 1;", 
+        1
+    ], 
+    [
+        "SELECT g_id, h_id, index, ten FROM housing  WHERE (SELECT count(*) AS count_1 FROM hh_persons WHERE hh_persons.RACAIAN = 1 AND hh_persons.RACNUM = 1 AND hh_persons.RELP = 0 AND hh_persons.h_id = housing.h_id) = 1;", 
+        1
+    ], 
+    [
+        "SELECT g_id, h_id, index, ten FROM housing  WHERE (SELECT count(*) AS count_1 FROM hh_persons WHERE hh_persons.isHISP = 0 AND hh_persons.RELP = 0 AND hh_persons.h_id = housing.h_id) = 1(SELECT count(*) AS count_2 FROM hh_persons WHERE hh_persons.RACWHT = 1 AND hh_persons.RELP = 0 AND hh_persons.h_id = housing.h_id) = 1;", 
+        1
+    ], 
+    [
+        "SELECT g_id, h_id, index, ten FROM housing  WHERE (SELECT count(*) AS count_1 FROM hh_persons WHERE hh_persons.isHISP = 0 AND hh_persons.RELP = 0 AND hh_persons.h_id = housing.h_id) = 1(SELECT count(*) AS count_2 FROM hh_persons WHERE hh_persons.RACAIAN = 1 AND hh_persons.RELP = 0 AND hh_persons.h_id = housing.h_id) = 1;", 
+        1
+    ]
+]

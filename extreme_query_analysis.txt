@@ -1,0 +1,290 @@
+>>>>>>>>>>>>>>>>>>>>>>>>>>>> Parsing query to relational algebra tree:
+SELECT COUNT(*) FROM R0 JOIN R1 ON R0.col1 = R1.col0 JOIN R2 ON R1.col1 = R2.col0 JOIN R3 ON R2.col1 = R3.col0 JOIN R4 ON R3.col1 = R4.col0
+<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+********** HistogramAnalysis **********
+                                                               State
+                                                               -------
+─> Aggregate[COUNT()] groupSets:[]                             EXPR$0 : AggregationInfo(true,COUNT,Set(),false)
+     │
+     .input
+     │
+     └──> Project                                              $f0 : AggregationInfo(false,Bottom,Set(),false)
+          │
+          .0 [as $f0]
+          │
+          ├──> Literal[DECIMAL]: 0                             AggregationInfo(false,Bottom,Set(),false)
+          │
+          .input
+          │
+          └──> Join[INNER]                                     col0  : AggregationInfo(false,Bottom,Set(public.R0.col0),false)
+               │                                               col1  : AggregationInfo(false,Bottom,Set(public.R0.col1),false)
+               │                                               col00 : AggregationInfo(false,Bottom,Set(public.R1.col0),false)
+               │                                               col10 : AggregationInfo(false,Bottom,Set(public.R1.col1),false)
+               │                                               col01 : AggregationInfo(false,Bottom,Set(public.R2.col0),false)
+               │                                               col11 : AggregationInfo(false,Bottom,Set(public.R2.col1),false)
+               │                                               col02 : AggregationInfo(false,Bottom,Set(public.R3.col0),false)
+               │                                               col12 : AggregationInfo(false,Bottom,Set(public.R3.col1),false)
+               │                                               col03 : AggregationInfo(false,Bottom,Set(public.R4.col0),false)
+               │                                               col13 : AggregationInfo(false,Bottom,Set(public.R4.col1),false)
+               │
+               .condition
+               │
+               ├──> Call[=]                                    AggregationInfo(false,Bottom,Set(public.R3.col1, public.R4.col0),false)
+               │    ├──> Ref[input.7] (col12)                  AggregationInfo(false,Bottom,Set(public.R3.col1),false)
+               │    └──> Ref[input.8] (col03)                  AggregationInfo(false,Bottom,Set(public.R4.col0),false)
+               │                                                       
+               │
+               .left
+               │
+               ├──> Join[INNER]                                col0  : AggregationInfo(false,Bottom,Set(public.R0.col0),false)
+               │    │                                          col1  : AggregationInfo(false,Bottom,Set(public.R0.col1),false)
+               │    │                                          col00 : AggregationInfo(false,Bottom,Set(public.R1.col0),false)
+               │    │                                          col10 : AggregationInfo(false,Bottom,Set(public.R1.col1),false)
+               │    │                                          col01 : AggregationInfo(false,Bottom,Set(public.R2.col0),false)
+               │    │                                          col11 : AggregationInfo(false,Bottom,Set(public.R2.col1),false)
+               │    │                                          col02 : AggregationInfo(false,Bottom,Set(public.R3.col0),false)
+               │    │                                          col12 : AggregationInfo(false,Bottom,Set(public.R3.col1),false)
+               │    │
+               │    .condition
+               │    │
+               │    ├──> Call[=]                               AggregationInfo(false,Bottom,Set(public.R2.col1, public.R3.col0),false)
+               │    │    ├──> Ref[input.5] (col11)             AggregationInfo(false,Bottom,Set(public.R2.col1),false)
+               │    │    └──> Ref[input.6] (col02)             AggregationInfo(false,Bottom,Set(public.R3.col0),false)
+               │    │                                                  
+               │    │
+               │    .left
+               │    │
+               │    ├──> Join[INNER]                           col0  : AggregationInfo(false,Bottom,Set(public.R0.col0),false)
+               │    │    │                                     col1  : AggregationInfo(false,Bottom,Set(public.R0.col1),false)
+               │    │    │                                     col00 : AggregationInfo(false,Bottom,Set(public.R1.col0),false)
+               │    │    │                                     col10 : AggregationInfo(false,Bottom,Set(public.R1.col1),false)
+               │    │    │                                     col01 : AggregationInfo(false,Bottom,Set(public.R2.col0),false)
+               │    │    │                                     col11 : AggregationInfo(false,Bottom,Set(public.R2.col1),false)
+               │    │    │
+               │    │    .condition
+               │    │    │
+               │    │    ├──> Call[=]                          AggregationInfo(false,Bottom,Set(public.R1.col1, public.R2.col0),false)
+               │    │    │    ├──> Ref[input.3] (col10)        AggregationInfo(false,Bottom,Set(public.R1.col1),false)
+               │    │    │    └──> Ref[input.4] (col01)        AggregationInfo(false,Bottom,Set(public.R2.col0),false)
+               │    │    │                                             
+               │    │    │
+               │    │    .left
+               │    │    │
+               │    │    ├──> Join[INNER]                      col0  : AggregationInfo(false,Bottom,Set(public.R0.col0),false)
+               │    │    │    │                                col1  : AggregationInfo(false,Bottom,Set(public.R0.col1),false)
+               │    │    │    │                                col00 : AggregationInfo(false,Bottom,Set(public.R1.col0),false)
+               │    │    │    │                                col10 : AggregationInfo(false,Bottom,Set(public.R1.col1),false)
+               │    │    │    │
+               │    │    │    .condition
+               │    │    │    │
+               │    │    │    ├──> Call[=]                     AggregationInfo(false,Bottom,Set(public.R0.col1, public.R1.col0),false)
+               │    │    │    │    ├──> Ref[input.1] (col1)    AggregationInfo(false,Bottom,Set(public.R0.col1),false)
+               │    │    │    │    └──> Ref[input.2] (col00)   AggregationInfo(false,Bottom,Set(public.R1.col0),false)
+               │    │    │    │                                        
+               │    │    │    │
+               │    │    │    .left
+               │    │    │    │
+               │    │    │    ├──> TableScan[public.R0]        col0 : AggregationInfo(false,Bottom,Set(public.R0.col0),false)
+               │    │    │    │                                col1 : AggregationInfo(false,Bottom,Set(public.R0.col1),false)
+               │    │    │    │
+               │    │    │    .right
+               │    │    │    │
+               │    │    │    └──> TableScan[public.R1]        col0 : AggregationInfo(false,Bottom,Set(public.R1.col0),false)
+               │    │    │                                     col1 : AggregationInfo(false,Bottom,Set(public.R1.col1),false)
+               │    │    │                                             
+               │    │    │
+               │    │    .right
+               │    │    │
+               │    │    └──> TableScan[public.R2]             col0 : AggregationInfo(false,Bottom,Set(public.R2.col0),false)
+               │    │                                          col1 : AggregationInfo(false,Bottom,Set(public.R2.col1),false)
+               │    │                                                  
+               │    │
+               │    .right
+               │    │
+               │    └──> TableScan[public.R3]                  col0 : AggregationInfo(false,Bottom,Set(public.R3.col0),false)
+               │                                               col1 : AggregationInfo(false,Bottom,Set(public.R3.col1),false)
+               │                                                       
+               │
+               .right
+               │
+               └──> TableScan[public.R4]                       col0 : AggregationInfo(false,Bottom,Set(public.R4.col0),false)
+                                                               col1 : AggregationInfo(false,Bottom,Set(public.R4.col1),false)
+                                                                       
+
+********** ElasticSensitivityAnalysis **********
+                                                               State
+                                                               -------
+─> Aggregate[COUNT()] groupSets:[]                             { stability: 14641.0, isPublic: false, ancestors: Set(public.R1, public.R2, public.R3, public.R4, public.R0) }
+     │                                                         EXPR$0 : sensitivity: Some(14641.0), maxFreq: Infinity, aggregationApplied: true, postAggregationArithmeticApplied: false, canRelease: false
+     │
+     .input
+     │
+     └──> Project                                              { stability: 14641.0, isPublic: false, ancestors: Set(public.R1, public.R2, public.R3, public.R4, public.R0) }
+          │                                                    $f0 : sensitivity: None, maxFreq: Infinity, aggregationApplied: false, postAggregationArithmeticApplied: false, canRelease: true
+          │
+          .0 [as $f0]
+          │
+          ├──> Literal[DECIMAL]: 0                             sensitivity: None, maxFreq: Infinity, aggregationApplied: false, postAggregationArithmeticApplied: false, canRelease: true
+          │
+          .input
+          │
+          └──> Join[INNER]                                     { stability: 14641.0, isPublic: false, ancestors: Set(public.R1, public.R2, public.R3, public.R4, public.R0) }
+               │                                               col0  : sensitivity: None, maxFreq: 161051.0, aggregationApplied: false, postAggregationArithmeticApplied: false, canRelease: false
+               │                                               col1  : sensitivity: None, maxFreq: 161051.0, aggregationApplied: false, postAggregationArithmeticApplied: false, canRelease: false
+               │                                               col00 : sensitivity: None, maxFreq: 161051.0, aggregationApplied: false, postAggregationArithmeticApplied: false, canRelease: false
+               │                                               col10 : sensitivity: None, maxFreq: 161051.0, aggregationApplied: false, postAggregationArithmeticApplied: false, canRelease: false
+               │                                               col01 : sensitivity: None, maxFreq: 161051.0, aggregationApplied: false, postAggregationArithmeticApplied: false, canRelease: false
+               │                                               col11 : sensitivity: None, maxFreq: 161051.0, aggregationApplied: false, postAggregationArithmeticApplied: false, canRelease: false
+               │                                               col02 : sensitivity: None, maxFreq: 161051.0, aggregationApplied: false, postAggregationArithmeticApplied: false, canRelease: false
+               │                                               col12 : sensitivity: None, maxFreq: 161051.0, aggregationApplied: false, postAggregationArithmeticApplied: false, canRelease: false
+               │                                               col03 : sensitivity: None, maxFreq: 161051.0, aggregationApplied: false, postAggregationArithmeticApplied: false, canRelease: false
+               │                                               col13 : sensitivity: None, maxFreq: 161051.0, aggregationApplied: false, postAggregationArithmeticApplied: false, canRelease: false
+               │
+               .condition
+               │
+               ├──> Call[=]                                    sensitivity: Some(Infinity), maxFreq: Infinity, aggregationApplied: false, postAggregationArithmeticApplied: false, canRelease: false
+               │    ├──> Ref[input.7] (col12)                  sensitivity: None, maxFreq: 14641.0, aggregationApplied: false, postAggregationArithmeticApplied: false, canRelease: false
+               │    └──> Ref[input.8] (col03)                  sensitivity: None, maxFreq: 11.0, aggregationApplied: false, postAggregationArithmeticApplied: false, canRelease: false
+               │                                                       
+               │
+               .left
+               │
+               ├──> Join[INNER]                                { stability: 1331.0, isPublic: false, ancestors: Set(public.R0, public.R1, public.R2, public.R3) }
+               │    │                                          col0  : sensitivity: None, maxFreq: 14641.0, aggregationApplied: false, postAggregationArithmeticApplied: false, canRelease: false
+               │    │                                          col1  : sensitivity: None, maxFreq: 14641.0, aggregationApplied: false, postAggregationArithmeticApplied: false, canRelease: false
+               │    │                                          col00 : sensitivity: None, maxFreq: 14641.0, aggregationApplied: false, postAggregationArithmeticApplied: false, canRelease: false
+               │    │                                          col10 : sensitivity: None, maxFreq: 14641.0, aggregationApplied: false, postAggregationArithmeticApplied: false, canRelease: false
+               │    │                                          col01 : sensitivity: None, maxFreq: 14641.0, aggregationApplied: false, postAggregationArithmeticApplied: false, canRelease: false
+               │    │                                          col11 : sensitivity: None, maxFreq: 14641.0, aggregationApplied: false, postAggregationArithmeticApplied: false, canRelease: false
+               │    │                                          col02 : sensitivity: None, maxFreq: 14641.0, aggregationApplied: false, postAggregationArithmeticApplied: false, canRelease: false
+               │    │                                          col12 : sensitivity: None, maxFreq: 14641.0, aggregationApplied: false, postAggregationArithmeticApplied: false, canRelease: false
+               │    │
+               │    .condition
+               │    │
+               │    ├──> Call[=]                               sensitivity: Some(Infinity), maxFreq: Infinity, aggregationApplied: false, postAggregationArithmeticApplied: false, canRelease: false
+               │    │    ├──> Ref[input.5] (col11)             sensitivity: None, maxFreq: 1331.0, aggregationApplied: false, postAggregationArithmeticApplied: false, canRelease: false
+               │    │    └──> Ref[input.6] (col02)             sensitivity: None, maxFreq: 11.0, aggregationApplied: false, postAggregationArithmeticApplied: false, canRelease: false
+               │    │                                                  
+               │    │
+               │    .left
+               │    │
+               │    ├──> Join[INNER]                           { stability: 121.0, isPublic: false, ancestors: Set(public.R0, public.R1, public.R2) }
+               │    │    │                                     col0  : sensitivity: None, maxFreq: 1331.0, aggregationApplied: false, postAggregationArithmeticApplied: false, canRelease: false
+               │    │    │                                     col1  : sensitivity: None, maxFreq: 1331.0, aggregationApplied: false, postAggregationArithmeticApplied: false, canRelease: false
+               │    │    │                                     col00 : sensitivity: None, maxFreq: 1331.0, aggregationApplied: false, postAggregationArithmeticApplied: false, canRelease: false
+               │    │    │                                     col10 : sensitivity: None, maxFreq: 1331.0, aggregationApplied: false, postAggregationArithmeticApplied: false, canRelease: false
+               │    │    │                                     col01 : sensitivity: None, maxFreq: 1331.0, aggregationApplied: false, postAggregationArithmeticApplied: false, canRelease: false
+               │    │    │                                     col11 : sensitivity: None, maxFreq: 1331.0, aggregationApplied: false, postAggregationArithmeticApplied: false, canRelease: false
+               │    │    │
+               │    │    .condition
+               │    │    │
+               │    │    ├──> Call[=]                          sensitivity: Some(Infinity), maxFreq: Infinity, aggregationApplied: false, postAggregationArithmeticApplied: false, canRelease: false
+               │    │    │    ├──> Ref[input.3] (col10)        sensitivity: None, maxFreq: 121.0, aggregationApplied: false, postAggregationArithmeticApplied: false, canRelease: false
+               │    │    │    └──> Ref[input.4] (col01)        sensitivity: None, maxFreq: 11.0, aggregationApplied: false, postAggregationArithmeticApplied: false, canRelease: false
+               │    │    │                                             
+               │    │    │
+               │    │    .left
+               │    │    │
+               │    │    ├──> Join[INNER]                      { stability: 11.0, isPublic: false, ancestors: Set(public.R0, public.R1) }
+               │    │    │    │                                col0  : sensitivity: None, maxFreq: 121.0, aggregationApplied: false, postAggregationArithmeticApplied: false, canRelease: false
+               │    │    │    │                                col1  : sensitivity: None, maxFreq: 121.0, aggregationApplied: false, postAggregationArithmeticApplied: false, canRelease: false
+               │    │    │    │                                col00 : sensitivity: None, maxFreq: 121.0, aggregationApplied: false, postAggregationArithmeticApplied: false, canRelease: false
+               │    │    │    │                                col10 : sensitivity: None, maxFreq: 121.0, aggregationApplied: false, postAggregationArithmeticApplied: false, canRelease: false
+               │    │    │    │
+               │    │    │    .condition
+               │    │    │    │
+               │    │    │    ├──> Call[=]                     sensitivity: Some(Infinity), maxFreq: Infinity, aggregationApplied: false, postAggregationArithmeticApplied: false, canRelease: false
+               │    │    │    │    ├──> Ref[input.1] (col1)    sensitivity: None, maxFreq: 11.0, aggregationApplied: false, postAggregationArithmeticApplied: false, canRelease: false
+               │    │    │    │    └──> Ref[input.2] (col00)   sensitivity: None, maxFreq: 11.0, aggregationApplied: false, postAggregationArithmeticApplied: false, canRelease: false
+               │    │    │    │                                        
+               │    │    │    │
+               │    │    │    .left
+               │    │    │    │
+               │    │    │    ├──> TableScan[public.R0]        { stability: 1.0, isPublic: false, ancestors: Set(public.R0) }
+               │    │    │    │                                col0 : sensitivity: None, maxFreq: 11.0, aggregationApplied: false, postAggregationArithmeticApplied: false, canRelease: false
+               │    │    │    │                                col1 : sensitivity: None, maxFreq: 11.0, aggregationApplied: false, postAggregationArithmeticApplied: false, canRelease: false
+               │    │    │    │
+               │    │    │    .right
+               │    │    │    │
+               │    │    │    └──> TableScan[public.R1]        { stability: 1.0, isPublic: false, ancestors: Set(public.R1) }
+               │    │    │                                     col0 : sensitivity: None, maxFreq: 11.0, aggregationApplied: false, postAggregationArithmeticApplied: false, canRelease: false
+               │    │    │                                     col1 : sensitivity: None, maxFreq: 11.0, aggregationApplied: false, postAggregationArithmeticApplied: false, canRelease: false
+               │    │    │                                             
+               │    │    │
+               │    │    .right
+               │    │    │
+               │    │    └──> TableScan[public.R2]             { stability: 1.0, isPublic: false, ancestors: Set(public.R2) }
+               │    │                                          col0 : sensitivity: None, maxFreq: 11.0, aggregationApplied: false, postAggregationArithmeticApplied: false, canRelease: false
+               │    │                                          col1 : sensitivity: None, maxFreq: 11.0, aggregationApplied: false, postAggregationArithmeticApplied: false, canRelease: false
+               │    │                                                  
+               │    │
+               │    .right
+               │    │
+               │    └──> TableScan[public.R3]                  { stability: 1.0, isPublic: false, ancestors: Set(public.R3) }
+               │                                               col0 : sensitivity: None, maxFreq: 11.0, aggregationApplied: false, postAggregationArithmeticApplied: false, canRelease: false
+               │                                               col1 : sensitivity: None, maxFreq: 11.0, aggregationApplied: false, postAggregationArithmeticApplied: false, canRelease: false
+               │                                                       
+               │
+               .right
+               │
+               └──> TableScan[public.R4]                       { stability: 1.0, isPublic: false, ancestors: Set(public.R4) }
+                                                               col0 : sensitivity: None, maxFreq: 11.0, aggregationApplied: false, postAggregationArithmeticApplied: false, canRelease: false
+                                                               col1 : sensitivity: None, maxFreq: 11.0, aggregationApplied: false, postAggregationArithmeticApplied: false, canRelease: false
+                                                                       
+[[(True, False), (True, False), (True, False), (True, False), (True, False), (True, False), (True, False), (True, False), (True, False), (True, False)], [(True, False), (True, False), (True, False), (True, False), (True, False), (True, False), (True, False), (True, False), (True, False), (True, False)], [(True, False), (True, False), (True, False), (True, False), (True, False), (True, False), (True, False), (True, False), (True, False), (True, False)], [(True, False), (True, False), (True, False), (True, False), (True, False), (True, False), (True, False), (True, False), (True, False), (True, False)], [(True, False), (True, False), (True, False), (True, False), (True, False), (True, False), (True, False), (True, False), (True, False), (True, False)]]
+local sensitivity: assert
+[{False: 10}, {}, {}, {}, {}]
+0
+prelist: [{False: 10}, {}, {}, {}, {}]
+postlist [{}, {}, {}, {}, {True: 10}]
+preMax: [10, 0, 0, 0, 0]
+postMax: [0, 0, 0, 0, 10]
+assert
+[{False: 10}, {}, {}, {}, {}]
+---
+databases:
+- database: "test"
+  dialect: "vertica"
+  namespace: "public"
+  tables:
+  - table: "R0"
+    columns:
+    - name: "col0"
+      maxFreq: 10
+    - name: "col1"
+      maxFreq: 10
+  - table: "R1"
+    columns:
+    - name: "col0"
+      maxFreq: 10
+    - name: "col1"
+      maxFreq: 10
+  - table: "R2"
+    columns:
+    - name: "col0"
+      maxFreq: 10
+    - name: "col1"
+      maxFreq: 10
+  - table: "R3"
+    columns:
+    - name: "col0"
+      maxFreq: 10
+    - name: "col1"
+      maxFreq: 10
+  - table: "R4"
+    columns:
+    - name: "col0"
+      maxFreq: 10
+    - name: "col1"
+      maxFreq: 10
+
+SELECT COUNT(*) FROM R0 JOIN R1 ON R0.col1 = R1.col0 JOIN R2 ON R1.col1 = R2.col0 JOIN R3 ON R2.col1 = R3.col0 JOIN R4 ON R3.col1 = R4.col0
+
+
+Result
+====================
+
+
+PathJoin sensitivity: 0 
+Elastic sensitivity: 14641.0

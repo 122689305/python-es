@@ -1,0 +1,36 @@
+---
+databases:
+- database: "test"
+  dialect: "vertica"
+  namespace: "public"
+  tables:
+  - table: "R0"
+    columns:
+    - name: "col0"
+      maxFreq: 10
+    - name: "col1"
+      maxFreq: 10
+  - table: "R1"
+    columns:
+    - name: "col0"
+      maxFreq: 10
+    - name: "col1"
+      maxFreq: 10
+  - table: "R2"
+    columns:
+    - name: "col0"
+      maxFreq: 10
+    - name: "col1"
+      maxFreq: 10
+  - table: "R3"
+    columns:
+    - name: "col0"
+      maxFreq: 10
+    - name: "col1"
+      maxFreq: 10
+  - table: "R4"
+    columns:
+    - name: "col0"
+      maxFreq: 10
+    - name: "col1"
+      maxFreq: 10
