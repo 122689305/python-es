@@ -1,0 +1,78 @@
+[
+    [
+        "Total Distinct Views", 
+        18
+    ], 
+    [
+        "SELECT agep, g_id, h_id, ishisp, puma10, racaian, racasn, racblk, racnhpi, racnum, racsor, racwht, relp, sex, st, ten FROM housing, hh_persons WHERE hh_persons.h_id = housing.h_id;", 
+        51
+    ], 
+    [
+        "SELECT agep, g_id, h_id, ishisp, puma10, racaian, racasn, racblk, racnhpi, racnum, racsor, racwht, relp, sex, st, ten FROM housing, hh_persons WHERE hh_persons.h_id = housing.h_id AND hh_persons.h_id = housing.h_id;", 
+        26
+    ], 
+    [
+        "SELECT g_id, h_id, puma10, st, ten FROM housing;", 
+        23
+    ], 
+    [
+        "SELECT g_id, h_id, puma10, st, ten, A.count_1 FROM housing, (SELECT count(*) AS count_1, h_id FROM hh_persons GROUP BY h_id) AS A WHERE A.h_id = housing.h_id;", 
+        21
+    ], 
+    [
+        "SELECT agep, g_id, h_id, ishisp, puma10, racaian, racasn, racblk, racnhpi, racnum, racsor, racwht, relp, sex, st, ten, A.count_3 FROM housing, hh_persons, (SELECT count(*) AS count_3, h_id FROM hh_persons GROUP BY h_id) AS A WHERE A.h_id = housing.h_id AND hh_persons.h_id = housing.h_id AND (SELECT count(*) AS count_2 FROM hh_persons WHERE hh_persons.RELP = 0 AND hh_persons.SEX = 2 AND hh_persons.h_id = housing.h_id) = 1 AND (SELECT count(*) AS count_1 FROM hh_persons WHERE hh_persons.RELP IN (0, 1) AND hh_persons.h_id = housing.h_id) != 2;", 
+        12
+    ], 
+    [
+        "SELECT agep, g_id, h_id, ishisp, puma10, racaian, racasn, racblk, racnhpi, racnum, racsor, racwht, relp, sex, st, ten, A.count_3 FROM housing, hh_persons, (SELECT count(*) AS count_3, h_id FROM hh_persons GROUP BY h_id) AS A WHERE A.h_id = housing.h_id AND hh_persons.h_id = housing.h_id AND (SELECT count(*) AS count_2 FROM hh_persons WHERE hh_persons.RELP = 0 AND hh_persons.SEX = 1 AND hh_persons.h_id = housing.h_id) = 1 AND (SELECT count(*) AS count_1 FROM hh_persons WHERE hh_persons.RELP IN (0, 1) AND hh_persons.h_id = housing.h_id) != 2;", 
+        12
+    ], 
+    [
+        "SELECT agep, g_id, h_id, ishisp, puma10, racaian, racasn, racblk, racnhpi, racnum, racsor, racwht, relp, sex, st, ten, A.count_3 FROM housing, hh_persons, (SELECT count(*) AS count_3, h_id FROM hh_persons WHERE hh_persons.SEX = 1 GROUP BY h_id) AS A WHERE A.h_id = housing.h_id AND hh_persons.h_id = housing.h_id AND (SELECT count(DISTINCT hh_persons.SEX) AS count_2 FROM hh_persons WHERE hh_persons.RELP IN (0, 1) AND hh_persons.h_id = housing.h_id) = 1 AND (SELECT count(*) AS count_1 FROM hh_persons WHERE hh_persons.RELP IN (0, 1) AND hh_persons.h_id = housing.h_id) = 2;", 
+        6
+    ], 
+    [
+        "SELECT agep, g_id, h_id, ishisp, puma10, racaian, racasn, racblk, racnhpi, racnum, racsor, racwht, relp, sex, st, ten, A.count_3 FROM housing, hh_persons, (SELECT count(*) AS count_3, h_id FROM hh_persons WHERE hh_persons.SEX = 2 GROUP BY h_id) AS A WHERE A.h_id = housing.h_id AND hh_persons.h_id = housing.h_id AND (SELECT count(DISTINCT hh_persons.SEX) AS count_2 FROM hh_persons WHERE hh_persons.RELP IN (0, 1) AND hh_persons.h_id = housing.h_id) = 1 AND (SELECT count(*) AS count_1 FROM hh_persons WHERE hh_persons.RELP IN (0, 1) AND hh_persons.h_id = housing.h_id) = 2;", 
+        6
+    ], 
+    [
+        "SELECT agep, g_id, h_id, ishisp, puma10, racaian, racasn, racblk, racnhpi, racnum, racsor, racwht, relp, sex, st, ten, A.count_2 FROM housing, hh_persons, (SELECT count(DISTINCT hh_persons.SEX) AS count_2, h_id FROM hh_persons WHERE hh_persons.RELP IN (0, 1) GROUP BY h_id) AS A WHERE A.h_id = housing.h_id AND hh_persons.h_id = housing.h_id AND (SELECT count(*) AS count_1 FROM hh_persons WHERE hh_persons.RELP IN (0, 1) AND hh_persons.h_id = housing.h_id) = 2;", 
+        6
+    ], 
+    [
+        "SELECT agep, g_id, h_id, ishisp, puma10, racaian, racasn, racblk, racnhpi, racnum, racsor, racwht, relp, sex, st, ten FROM hh_persons JOIN housing ON hh_persons.h_id = housing.h_id;", 
+        5
+    ], 
+    [
+        "SELECT g_id, h_id, puma10, st, ten, A.count_3 FROM housing, (SELECT count(*) AS count_3, h_id FROM hh_persons GROUP BY h_id) AS A WHERE A.h_id = housing.h_id AND (SELECT count(*) AS count_2 FROM hh_persons WHERE hh_persons.RELP = 0 AND hh_persons.SEX = 1 AND hh_persons.h_id = housing.h_id) = 1 AND (SELECT count(*) AS count_1 FROM hh_persons WHERE hh_persons.RELP IN (0, 1) AND hh_persons.h_id = housing.h_id) != 2;", 
+        4
+    ], 
+    [
+        "SELECT g_id, h_id, puma10, st, ten, A.count_1 FROM housing, (SELECT count(*) AS count_1, h_id FROM hh_persons WHERE hh_persons.RELP IN (0, 1) GROUP BY h_id) AS A WHERE A.h_id = housing.h_id;", 
+        4
+    ], 
+    [
+        "SELECT g_id, h_id, puma10, st, ten, A.count_2 FROM housing, (SELECT count(DISTINCT hh_persons.SEX) AS count_2, h_id FROM hh_persons WHERE hh_persons.RELP IN (0, 1) GROUP BY h_id) AS A WHERE A.h_id = housing.h_id AND (SELECT count(*) AS count_1 FROM hh_persons WHERE hh_persons.RELP IN (0, 1) AND hh_persons.h_id = housing.h_id) = 2;", 
+        4
+    ], 
+    [
+        "SELECT g_id, h_id, puma10, st, ten, A.count_3 FROM housing, (SELECT count(*) AS count_3, h_id FROM hh_persons GROUP BY h_id) AS A WHERE A.h_id = housing.h_id AND (SELECT count(*) AS count_2 FROM hh_persons WHERE hh_persons.RELP = 0 AND hh_persons.SEX = 2 AND hh_persons.h_id = housing.h_id) = 1 AND (SELECT count(*) AS count_1 FROM hh_persons WHERE hh_persons.RELP IN (0, 1) AND hh_persons.h_id = housing.h_id) != 2;", 
+        4
+    ], 
+    [
+        "SELECT g_id, h_id, puma10, st, ten, A.count_3 FROM housing, (SELECT count(*) AS count_3, h_id FROM hh_persons WHERE hh_persons.SEX = 1 GROUP BY h_id) AS A WHERE A.h_id = housing.h_id AND (SELECT count(DISTINCT hh_persons.SEX) AS count_2 FROM hh_persons WHERE hh_persons.RELP IN (0, 1) AND hh_persons.h_id = housing.h_id) = 1 AND (SELECT count(*) AS count_1 FROM hh_persons WHERE hh_persons.RELP IN (0, 1) AND hh_persons.h_id = housing.h_id) = 2;", 
+        2
+    ], 
+    [
+        "SELECT g_id, h_id, puma10, st, ten, A.count_2 FROM housing, (SELECT count(*) AS count_2, h_id FROM hh_persons WHERE hh_persons.SEX = 2 GROUP BY h_id) AS A WHERE A.h_id = housing.h_id AND (SELECT count(*) AS count_1 FROM hh_persons WHERE hh_persons.RELP IN (0, 1) AND hh_persons.h_id = housing.h_id) != 2;", 
+        2
+    ], 
+    [
+        "SELECT g_id, h_id, puma10, st, ten, A.count_2 FROM housing, (SELECT count(*) AS count_2, h_id FROM hh_persons WHERE hh_persons.SEX = 1 GROUP BY h_id) AS A WHERE A.h_id = housing.h_id AND (SELECT count(*) AS count_1 FROM hh_persons WHERE hh_persons.RELP IN (0, 1) AND hh_persons.h_id = housing.h_id) != 2;", 
+        2
+    ], 
+    [
+        "SELECT g_id, h_id, puma10, st, ten, A.count_3 FROM housing, (SELECT count(*) AS count_3, h_id FROM hh_persons WHERE hh_persons.SEX = 2 GROUP BY h_id) AS A WHERE A.h_id = housing.h_id AND (SELECT count(DISTINCT hh_persons.SEX) AS count_2 FROM hh_persons WHERE hh_persons.RELP IN (0, 1) AND hh_persons.h_id = housing.h_id) = 1 AND (SELECT count(*) AS count_1 FROM hh_persons WHERE hh_persons.RELP IN (0, 1) AND hh_persons.h_id = housing.h_id) = 2;", 
+        2
+    ]
+]

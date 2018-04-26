@@ -1,0 +1,44 @@
+---
+databases:
+- database: "test"
+  dialect: "vertica"
+  namespace: "public"
+  tables:
+  - table: "housing"
+    columns:
+    - name: "PUMA10"
+      maxFreq: 38439
+    - name: "h_id"
+      maxFreq: 1
+    - name: "g_id"
+      maxFreq: 38439
+    - name: "TEN"
+      maxFreq: 8611
+    - name: "ST"
+      maxFreq: 38439
+  - table: "hh_persons"
+    columns:
+    - name: "RACNHPI"
+      maxFreq: 52222
+    - name: "RACWHT"
+      maxFreq: 35456
+    - name: "RACNUM"
+      maxFreq: 51654
+    - name: "RELP"
+      maxFreq: 22135
+    - name: "SEX"
+      maxFreq: 27900
+    - name: "RACSOR"
+      maxFreq: 50413
+    - name: "h_id"
+      maxFreq: 8
+    - name: "RACASN"
+      maxFreq: 51628
+    - name: "RACBLK"
+      maxFreq: 37833
+    - name: "RACAIAN"
+      maxFreq: 51661
+    - name: "AGEP"
+      maxFreq: 1372
+    - name: "isHISP"
+      maxFreq: 48542
